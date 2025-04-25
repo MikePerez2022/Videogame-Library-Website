@@ -1,0 +1,51 @@
+﻿@model VideoGame
+
+<form asp-controller="VideoGame" asp-action="Edit" method="post">
+	<!-- change the css inline to css class -->
+	<div class="topSpace">
+		<div class="headSpace">
+			<h2 class="text-primary">Edit Movie</h2>
+			<hr />
+			<br />
+			<div asp-validation-summary="All" class="text-warning"></div>
+		</div>
+		<div class="bottomSpace">
+			<label asp-for="Title"></label>
+			<input asp-for="Title" class="form-control" />
+			<span asp-validation-for="Title" class="text-warning"></span>
+		</div>
+		<div class="bottomSpace">
+			<label asp-for="Year"></label>
+			<input asp-for="Year" class="form-control" />
+			<span asp-validation-for="Year" class="text-warning"></span>
+		</div>
+		<div class="bottomSpace">
+			<label asp-for="Platform"></label>
+			<input asp-for="Platform" class="form-control" />
+			<span asp-validation-for="Platform" class="text-warning"></span>
+		</div>
+		<div class="bottomSpace">
+			<label asp-for="Genre"></label>
+			<input asp-for="Genre" class="form-control" />
+			<span asp-validation-for="Genre" class="text-warning"></span>
+		</div>
+		<div class="bottomSpace">
+			<label asp-for="ESRB"></label>
+			<input asp-for="ESRB" class="form-control" />
+			<span asp-validation-for="ESRB" class="text-warning"></span>
+		</div>
+		<div class="bottomSpace">
+			<label asp-for="Image"></label>
+			<input asp-for="Image" class="form-control" />
+			<span asp-validation-for="Image" class="text-warning"></span>
+		</div>
+
+		<button type="submit" class="btn btn-primary">
+			Update
+		</button>
+		<div name="lblMsg" class="text-warning">
+			@ViewData["Error"]
+		</div>
+	</div>
+
+</form>

@@ -1,0 +1,61 @@
+﻿@model VideoGame
+
+@if (Model == null)
+{
+	<h2>No Video Game Provided</h2>
+}
+else
+{
+	<form asp-controller="VideoGame" asp-action="Loan">
+		<div class="card cardWidth">
+			<div class="card-title">
+				<h2 class="text-primary">@Model.Title</h2>
+			</div>
+			<img class="card-img-top" src="@Model.Image" />
+			<div class="card-text text-light">
+				<h3>Year: @Model.Year</h3>
+				<hr />
+			</div>
+			<div class="card-text text-light">
+				<h3>ESRB: @Model.ESRB</h3>
+				<hr />
+			</div>
+			<div class="card-text text-light">
+				<h3>Genre: @Model.Genre</h3>
+				<hr />
+			</div>
+			<div class="card-text text-light">
+				<h3>Platform: @Model.Platform</h3>
+				<hr />
+			</div>
+			<div class="card-body">
+				@if (Model.LoanedTo == null || Model.LoanDate == null)
+				{
+					<input asp-for="Id" type="hidden" />
+					<div class="input-group btnMargin">
+						<input type="text" name="name" class="form-control" placeholder="Loan Name" aria-describedby="button-addon2">
+						<button class="btn btn-primary" type="submit" id="button-addon2">Loan</button>
+					</div>
+				}
+				else
+				{
+					<input asp-for="Id" type="hidden" />
+					<div>
+						<h3><em class="text-success">Loaned to @Model.LoanedTo on @Model.LoanDate</em></h3>
+						<button asp-action="Return" class="btn btn-primary" type="submit" id="button-addon2">Return</button>
+					</div>
+				}
+				<hr />
+			</div>
+			<div class="text-center">
+				<a asp-controller="VideoGame" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary mx-2">
+					<i class="bi bi-wrench">Edit</i>
+				</a>
+				<a asp-controller="VideoGame" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-warning mx-2">
+					<i class="bi bi-trash3-fill">Delete</i>
+				</a>
+			</div>
+			<input type="hidden" name="id" value="@Model.Id" />
+		</div>
+	</form>
+}

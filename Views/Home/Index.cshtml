@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4 text-warning">PixelPortal <i class="bi bi-ubuntu text-success"></i></h1>
+    <hr />
+    <br />
+    <h2>@ViewData["Title"]</h2>
+    <br />
+    <h2 class="text-light content">
+        Welcome to the Pixel Portal a site where you can log your video games and keep track of your collection.
+        It even helps you keep track of who and when you loan out games.
+    </h2>
+    <br />
+    <h2>
+        <form asp-controller="VideoGame" asp-action="Collection">
+            <button type="submit" class="btn btn-outline-primary">
+                To Collection
+            </button>
+        </form>
+    </h2>
+</div>

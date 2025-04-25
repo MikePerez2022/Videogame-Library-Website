@@ -1,0 +1,27 @@
+.content {
+    margin: 30px;
+    padding: 30px;
+}
+
+.cardWidth {
+    width:50%;
+}
+
+.bottomSpace {
+    margin-bottom: 30px;
+}
+
+.topSpace {
+    margin-top: 30px;
+    padding: 30px;
+    border:solid;
+    border-color:darkgoldenrod;
+}
+
+.headSpace{
+    padding-bottom: 20px;
+}
+
+.btnMargin{
+    margin-bottom: 10px;
+}

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<VideoGame>
+
+@{
+    ViewData["Title"] = "Collection Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4 text-warning">PixelPortal <i class="bi bi-ubuntu text-success"></i></h1>
+    <hr />
+    <br />
+    <h2>@ViewData["Title"]</h2>
+    <br />
+    <h2 class="content">
+        Games in the collection: @Model.Count()
+    </h2>
+    <br />
+    <form class="d-flex" asp-controller="VideoGame" asp-action="Search" method="post">
+        <input name="key" class="form-control me-2" type="search" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-2" type="submit">Search</button>
+    </form>
+</div>
+
+@if (Model == null || Model.Count() == 0)
+{
+	<h2>No Video Games Provided</h2>
+}
+else
+{
+	<h4>@TempData["success"]</h4>
+	foreach (VideoGame vg in Model)
+	{
+        <partial name="_VideoGamePartialView.cshtml" for="@vg" />
+		<br />
+	}
+}
