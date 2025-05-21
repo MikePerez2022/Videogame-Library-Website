@@ -1,10 +1,13 @@
-﻿using VideoGameLibrary.Interfaces;
+﻿using VideoGameLibrary.Factories;
+using VideoGameLibrary.Interfaces;
 using VideoGameLibrary.Models;
 
 namespace VideoGameLibrary.Data
 {
     public class GameCollection : IDataAccessLayer
     {
+        public VideoGameFactory factory => throw new NotImplementedException();
+
         public void AddGame(VideoGame game)
         {
             throw new NotImplementedException();
