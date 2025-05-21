@@ -28,7 +28,16 @@ namespace VideoGameLibrary.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				dal.AddGame(g);
+                var game = dal.factory.CreateGame(
+					g.Title,
+					g.Year,
+					g.Platform,
+					g.Genre,
+					g.ESRB,
+					g.Image
+				);
+
+                dal.AddGame(g);
 				return RedirectToAction("Collection", "VideoGame");
 			}
 			return View();
@@ -86,7 +95,7 @@ namespace VideoGameLibrary.Controllers
 		[Route("Game")]
 		public IActionResult DisplayGame()
 		{
-			VideoGame g = new VideoGame("Halo 3", 2007, "PC", "FPS", "M", "");
+			VideoGame g = new VideoGame();
 			return View(g);
 		}
 

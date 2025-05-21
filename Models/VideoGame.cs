@@ -11,7 +11,7 @@ namespace VideoGameLibrary.Models
         public string? Title { get; set; }
 
         [Required(ErrorMessage = "Release year is Required")]
-        public int? Year { get; set; }
+        public int Year { get; set; }
 
         [Required(ErrorMessage = "Game platform is Required")]
         public string? Platform { get; set; }
@@ -29,15 +29,5 @@ namespace VideoGameLibrary.Models
 		public DateOnly? LoanDate { get; set; }
 
 		public VideoGame() { }
-
-		public VideoGame(string? title, int? year, string? platform, string? genre, string? esrb, string? image)
-		{
-			Title = title;
-			Year = year;
-			Platform = platform;
-			Genre = genre;
-			ESRB = esrb;
-			Image = image;
-		}
 	}
 }
