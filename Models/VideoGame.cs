@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using VideoGameLibrary.Flyweight;
 
 namespace VideoGameLibrary.Models
 {
@@ -13,14 +14,16 @@ namespace VideoGameLibrary.Models
         [Required(ErrorMessage = "Release year is Required")]
         public int Year { get; set; }
 
+        public VideoGameSharedData SharedData { get; set; }
+
         [Required(ErrorMessage = "Game platform is Required")]
-        public string? Platform { get; set; }
+        public string? Platform => SharedData.Platform;
 
         [Required(ErrorMessage = "Game genre is Required")]
         public string? Genre { get; set; }
 
         [Required(ErrorMessage = "Game esrb rating is Required")]
-        public string? ESRB { get; set; }
+        public string? ESRB => SharedData.Rating;
 
         [Required(ErrorMessage = "Game image is Required")]
         public string? Image { get; set; }
