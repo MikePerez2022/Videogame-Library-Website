@@ -1,4 +1,5 @@
 ﻿using VideoGameLibrary.Factories;
+using VideoGameLibrary.Iterator;
 using VideoGameLibrary.Models;
 
 namespace VideoGameLibrary.Interfaces
@@ -16,5 +17,9 @@ namespace VideoGameLibrary.Interfaces
         VideoGame? GetGame(int? id);
 
 		void UpdateGame(VideoGame game);
+
+        IVideoGameIterator GetGenreIterator(string genre);
+
+        IVideoGameIterator GetPlatformIterator(string platform);
     }
 }

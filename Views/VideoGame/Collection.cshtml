@@ -18,6 +18,14 @@
         <input name="key" class="form-control me-2" type="search" placeholder="Search">
         <button class="btn btn-secondary my-2 my-2" type="submit">Search</button>
     </form>
+    <form class="d-flex" asp-controller="VideoGame" asp-action="FilterGenre" method="post">
+        <input name="key" class="form-control me-2" type="search" placeholder="Genre">
+        <button class="btn btn-secondary my-2 my-2" type="submit">Filter by genre</button>
+    </form>
+    <form class="d-flex" asp-controller="VideoGame" asp-action="FilterPlatform" method="post">
+        <input name="key" class="form-control me-2" type="search" placeholder="Platform">
+        <button class="btn btn-secondary my-2 my-2" type="submit">Filter by platform</button>
+    </form>
 </div>
 
 @if (Model == null || Model.Count() == 0)

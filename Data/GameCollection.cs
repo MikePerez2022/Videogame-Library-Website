@@ -1,5 +1,6 @@
 ﻿using VideoGameLibrary.Factories;
 using VideoGameLibrary.Interfaces;
+using VideoGameLibrary.Iterator;
 using VideoGameLibrary.Models;
 
 namespace VideoGameLibrary.Data
@@ -19,6 +20,16 @@ namespace VideoGameLibrary.Data
         }
 
         public IEnumerable<VideoGame> GetGames()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IVideoGameIterator GetGenreIterator(string genre)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IVideoGameIterator GetPlatformIterator(string platform)
         {
             throw new NotImplementedException();
         }
