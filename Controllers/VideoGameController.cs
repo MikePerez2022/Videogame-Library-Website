@@ -10,6 +10,7 @@ namespace VideoGameLibrary.Controllers
     public class VideoGameController : Controller
     {
         IDataAccessLayer dal = new GameCollectionDAL();
+        public List<VideoGame> FilteredGames { get; set; } = new();
 
         public IActionResult Index()
         {
@@ -137,8 +138,37 @@ namespace VideoGameLibrary.Controllers
 			return View("Collection", dal.GetGames().Where(x => x.Title.ToLower().Contains(key.ToLower())));
 		}
 
+        [HttpPost]
+        public IActionResult FilterGenre(string? key)
+        {
+            if (string.IsNullOrEmpty(key)) return View("Collection", dal.GetGames());
+			if (FilteredGames.Count > 0) FilteredGames.Clear();
+            var iterator = dal.GetGenreIterator(key);
+            while (iterator.HasNext())
+            {
+                FilteredGames.Add(iterator.Next());
+            }
 
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            return View("Collection", FilteredGames);
+        }
+
+        [HttpPost]
+        public IActionResult FilterPlatform(string? key)
+        {
+            if (string.IsNullOrEmpty(key)) return View("Collection", dal.GetGames());
+            if (FilteredGames.Count > 0) FilteredGames.Clear();
+
+            var iterator = dal.GetPlatformIterator(key);
+            while (iterator.HasNext())
+            {
+                FilteredGames.Add(iterator.Next());
+            }
+
+            return View("Collection", FilteredGames);
+        }
+
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
